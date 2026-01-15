@@ -1,0 +1,2213 @@
+/* =========================
+   RESET
+========================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  color: #2e2e2e;
+  background: #ffffff;
+}
+
+/* =========================
+   DESIGN TOKENS
+========================= */
+:root {
+  --green: #6bcf9d;
+  --yellow: #f4e285;
+  --gray: #6b7280;
+  --dark: #2e2e2e;
+  --bg-soft: #f9fafb;
+  --whatsapp-green: #25D366;
+  --whatsapp-green-dark: #1ebe5d;
+}
+
+/* =========================
+   YELLOW SECTION BACKGROUND
+========================= */
+
+.accent-yellow {
+  position: relative;
+  background: linear-gradient(180deg,
+      rgba(244, 226, 133, 0.45),
+      rgba(244, 226, 133, 0.25));
+}
+
+/* =========================
+   GLOBAL VISUAL POLISH
+========================= */
+
+body {
+  background: #ffffff;
+}
+
+/* Smooth section separation */
+section:not(.hero):nth-of-type(even) {
+  background: var(--bg-soft);
+}
+
+/* Headings feel more premium */
+h1,
+h2,
+h3 {
+  color: var(--dark);
+  letter-spacing: -0.02em;
+}
+
+/* Softer paragraphs */
+p {
+  max-width: 60ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* =========================
+   CONTAINER (SINGLE SOURCE)
+========================= */
+
+/* =========================
+   TYPOGRAPHY
+========================= */
+h1 {
+  font-size: clamp(1.8rem, 5vw, 2.6rem);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: clamp(1.4rem, 4vw, 2rem);
+  margin-bottom: 0.75rem;
+}
+
+h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  color: var(--gray);
+  margin-bottom: 1rem;
+}
+
+/* =========================
+   BUTTON UPGRADE
+========================= */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 1.4rem;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg,
+      var(--green),
+      #8ee3b8);
+  color: #ffffff;
+  box-shadow: 0 6px 20px rgba(107, 207, 157, 0.35);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 30px rgba(107, 207, 157, 0.45);
+}
+
+.btn-outline {
+  border: 2px solid var(--green);
+  color: var(--green);
+  background: #ffffff;
+}
+
+.btn-outline:hover {
+  background: var(--green);
+  color: #ffffff;
+}
+
+/* =========================
+   HEADER
+========================= */
+.site-header {
+  position: fixed;
+  /* ⬅️ REQUIRED */
+  top: 0;
+  left: 0;
+  right: 0;
+
+  background: #ffffff;
+  border-bottom: 1px solid #eee;
+  z-index: 1000;
+
+  transition: transform 0.25s ease;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 64px;
+
+  max-width: 2560px;
+  /* ⬅️ MATCH MAIN CONTENT */
+  margin: 0 auto;
+
+  padding-inline: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.logo svg {
+  height: 40px;
+  width: auto;
+}
+
+/* =========================
+   NAVIGATION (MOBILE FIRST)
+========================= */
+.nav-toggle {
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.site-nav {
+  position: absolute;
+  top: 64px;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  border-bottom: 1px solid #eee;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+}
+
+.site-nav.open {
+  display: flex;
+}
+
+.site-nav ul {
+  list-style: none;
+  padding: 1rem;
+  margin: 0;
+  width: 100%;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.site-nav li {
+  margin-bottom: 1rem;
+}
+
+.site-nav a {
+  text-decoration: none;
+  color: var(--dark);
+  font-weight: 600;
+}
+
+/* MOBILE NAV FONT */
+@media (max-width: 1024px) {
+  .site-nav a {
+    font-family: inherit;
+    /* or your custom font */
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+}
+
+@media (max-width: 1023px) {
+
+  .mobile-nav .lang-switch {
+    justify-content: center;
+    /* ⬅️ THIS centers it */
+    width: 100%;
+
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .mobile-nav .lang-switch a {
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+  }
+
+}
+
+/* =========================
+   DESKTOP NAV
+========================= */
+@media (min-width: 1024px) {
+
+  /* Hide burger */
+  .nav-toggle {
+    display: none;
+  }
+
+  /* Nav layout */
+  .site-nav {
+    position: static;
+    display: flex !important;
+    flex-direction: row;
+    align-items: center;
+    background: none;
+    border: none;
+  }
+
+  .site-nav ul {
+    display: flex;
+    gap: 3rem;
+    /* ⬅️ more space between items */
+    padding: 0;
+    width: auto;
+    max-width: none;
+  }
+
+  .site-nav li {
+    margin: 0;
+  }
+
+  /* NAV LINKS — BIGGER & STRONGER */
+  .site-nav a {
+    font-size: 1.25rem;
+    /* ⬅️ THIS is the key change */
+    font-weight: 600;
+    padding: 0.85rem 1.2rem;
+  }
+
+  /* Logo */
+  .logo svg {
+    height: 56px;
+    /* slightly bigger than before */
+  }
+}
+
+/* =========================
+   LANGUAGE DROPDOWN (DESKTOP ONLY)
+========================= */
+
+.site-nav .lang-dropdown {
+  position: relative;
+}
+
+.site-nav .lang-current {
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--gray);
+
+  padding: 0.45rem 0.7rem;
+  border-radius: 0.5rem;
+
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.site-nav .lang-current:hover {
+  background: rgba(244, 226, 133, 0.45);
+  color: var(--dark);
+}
+
+.site-nav .lang-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+
+  min-width: 84px;
+  margin-top: 0.4rem;
+
+  background: #ffffff;
+  border-radius: 0.75rem;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+
+  display: none;
+  flex-direction: column;
+  padding: 0.4rem;
+  z-index: 2000;
+}
+
+.site-nav .lang-dropdown.open .lang-menu {
+  display: flex;
+}
+
+.site-nav .chevron {
+  transition: transform 0.25s ease;
+}
+
+.site-nav .lang-dropdown.open .chevron {
+  transform: rotate(180deg);
+}
+
+.site-nav .lang-menu a {
+  padding: 0.45rem 0.7rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--dark);
+  white-space: nowrap;
+}
+
+.site-nav .lang-menu a:hover {
+  background: rgba(244, 226, 133, 0.35);
+}
+
+.site-nav .lang-menu a.active {
+  background: linear-gradient(180deg,
+      rgba(107, 207, 157, 0.35),
+      rgba(107, 207, 157, 0.2));
+  font-weight: 700;
+}
+
+@media (min-width: 1024px) {
+  .site-nav {
+    gap: 3rem;
+    /* ✅ same spacing as nav items */
+  }
+}
+
+
+/* =========================
+   MOBILE LANGUAGE SWITCH (BUTTONS)
+========================= */
+@media (max-width: 1023px) {
+
+  /* Ensure dropdown elements NEVER affect mobile */
+  .mobile-nav .lang-dropdown,
+  .mobile-nav .lang-menu,
+  .mobile-nav .lang-current {
+    display: none !important;
+  }
+
+  /* Restore classic 3-button language switch */
+  .mobile-nav .lang-switch {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .mobile-nav .lang-switch a {
+    display: inline-block;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    color: var(--gray);
+  }
+
+  .mobile-nav .lang-switch a.active {
+    color: var(--green);
+    font-weight: 700;
+  }
+}
+
+/* =========================
+   LANGUAGE SWITCH: DESKTOP vs MOBILE
+   (single-nav architecture)
+========================= */
+
+/* Desktop default: show dropdown, hide mobile buttons */
+.lang-mobile {
+  display: none;
+}
+
+/* Mobile: show buttons, hide dropdown */
+@media (max-width: 1023px) {
+
+  /* hide dropdown UI on mobile */
+  .lang-dropdown {
+    display: none;
+  }
+
+  /* show mobile buttons */
+  .lang-mobile {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+
+    width: 100%;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .lang-mobile a {
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    color: var(--gray);
+  }
+
+  .lang-mobile a.active {
+    color: var(--green);
+    font-weight: 700;
+  }
+}
+
+/* Desktop: ensure dropdown shows */
+@media (min-width: 1025px) {
+  .lang-dropdown {
+    display: block;
+  }
+}
+
+
+/* =========================
+   BURGER MENU ICON (SMALLER)
+========================= */
+
+.nav-toggle {
+  width: 26px;
+  /* was ~34px */
+  height: 18px;
+  /* was ~26px */
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+
+  z-index: 110;
+}
+
+/* Burger bars */
+.nav-toggle span {
+  display: block;
+  height: 2px;
+  /* was 3px */
+  width: 100%;
+  background-color: #111;
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* X state */
+.nav-toggle.open span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.nav-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.open span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* =========================
+   HIDE BURGER ON DESKTOP
+========================= */
+
+@media (min-width: 1024px) {
+  .nav-toggle {
+    display: none;
+  }
+}
+
+
+/* =========================
+   NAV LINK HOVER (SLIDE UP)
+========================= */
+
+.site-nav ul li a {
+  position: relative;
+  padding: 0.4rem 0.75rem;
+  border-radius: 0.6rem;
+  overflow: hidden;
+  transition: color 0.25s ease;
+  z-index: 0;
+}
+
+/* sliding background */
+.site-nav ul li a::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 0%;
+  background: linear-gradient(180deg,
+      rgba(107, 207, 157, 0.35),
+      rgba(107, 207, 157, 0.2));
+  z-index: -1;
+  transition: height 0.25s ease;
+}
+
+/* hover state */
+.site-nav ul li a:hover {
+  color: var(--dark);
+}
+
+.site-nav ul li a:hover::before {
+  height: 100%;
+}
+
+/* =========================
+   HERO – FINAL (LOCKED + CAROUSEL READY)
+========================= */
+
+.hero {
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Background image (JS-controlled) */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+
+  /* ✅ FALLBACK IMAGE (CRITICAL) */
+  background-image: url("/assets/images/hero_image_v2.jpg");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  z-index: 0;
+}
+
+/* FULL-WIDTH HORIZONTAL BAND */
+.hero-band {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: 3.5rem 1.5rem;
+  background: rgba(255, 255, 255, 0.75);
+
+  display: flex;
+  align-items: center;
+}
+
+.hero-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+}
+
+/* Typography */
+.hero-inner h1 {
+  font-size: clamp(1.9rem, 4vw, 2.6rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.hero-text {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 1.75rem;
+}
+
+/* Buttons */
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+/* Mobile tuning */
+@media (max-width: 768px) {
+  .hero {
+    min-height: 85vh;
+  }
+
+  .hero-band {
+    padding: 2.5rem 1.25rem;
+  }
+}
+
+/* =========================
+   HERO BACKGROUND (CROSSFADE)
+========================= */
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-bg-layer {
+  position: absolute;
+  inset: 0;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+}
+
+/* one layer always visible */
+.hero-bg-layer.active {
+  opacity: 1;
+}
+
+
+/* =========================
+   SINGLE COLUMN CENTERING
+========================= */
+
+.section-inner {
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.hero-content {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  /* ✅ THIS IS WHAT YOU ARE MISSING */
+}
+
+/* =========================
+   SECTION INTRO
+========================= */
+
+.section-inner h2 {
+  margin-bottom: 0.75rem;
+}
+
+.section-inner p {
+  font-size: 1.05rem;
+  color: #555;
+}
+
+/* =========================
+   SECTION TITLE DECORATION
+========================= */
+
+.section-inner h2 {
+  position: relative;
+  display: inline-block;
+}
+
+.section-inner h2::after {
+  content: "";
+  display: block;
+  height: 6px;
+  width: 60%;
+  margin: 0.75rem auto 0;
+  background: var(--yellow);
+  border-radius: 999px;
+}
+
+/* =========================
+   HOW IT WORKS
+========================= */
+
+#how {
+  background: #ffffff;
+}
+
+.how-grid {
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+/* Card */
+.how-card {
+  background: #ffffff;
+  border-radius: 1.5rem;
+  padding: 2.5rem 2rem 2rem;
+  text-align: center;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.06);
+  position: relative;
+}
+
+/* Number badge */
+.how-number {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg,
+      var(--yellow),
+      #fff3b0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: var(--dark);
+  margin: 0 auto 1.25rem;
+}
+
+.how-card h3 {
+  margin-bottom: 0.5rem;
+}
+
+.how-card p {
+  margin-bottom: 0;
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  .how-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* =========================
+   HOW IT WORKS — BIGGER FONTS ONLY (NO DESIGN CHANGE)
+========================= */
+
+.how-number {
+  font-size: 1.35rem;
+  /* was 1.2rem */
+}
+
+.how-card h3 {
+  font-size: 1.7rem;
+  /* bigger title */
+}
+
+.how-card p {
+  font-size: 1.05rem;
+  /* bigger text */
+  line-height: 1.6;
+  /* better readability */
+}
+
+/* Tablet / Desktop — slightly bigger */
+@media (min-width: 768px) {
+  .how-number {
+    font-size: 1.4rem;
+  }
+
+  .how-card h3 {
+    font-size: 1.8rem;
+  }
+
+  .how-card p {
+    font-size: 1.1rem;
+  }
+}
+
+/* =========================
+   HOW IT WORKS — SECTION TITLE FIX
+========================= */
+
+#how h2 {
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+/* Tablet / Desktop */
+@media (min-width: 768px) {
+  #how h2 {
+    font-size: 2.6rem;
+  }
+}
+
+
+/* =========================
+   CONTACT SECTION (PREMIUM)
+========================= */
+
+/* Section background – makes it different from HOW */
+#contact {
+  background: linear-gradient(180deg,
+      #f9fafb,
+      #ffffff);
+  position: relative;
+}
+
+/* subtle luxury accent line */
+#contact::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 3px;
+  background: linear-gradient(to right,
+      transparent,
+      var(--yellow),
+      transparent);
+}
+
+/* =========================
+   CONTACT GRID
+========================= */
+
+.contact-grid {
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.8rem;
+  position: relative;
+}
+
+/* =========================
+   CONTACT CARD BASE
+========================= */
+
+.contact-card {
+  background: linear-gradient(180deg,
+      #ffffff,
+      #fdfdfd);
+  border-radius: 1.6rem;
+  padding: 2.4rem 2rem;
+  text-align: center;
+  text-decoration: none;
+  color: var(--dark);
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.08);
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+/* =========================
+   ICON STYLE (DIFFERENT FROM HOW)
+========================= */
+
+.contact-icon {
+  font-size: 2rem;
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.035);
+  transition: transform 0.3s ease;
+}
+
+/* Text hierarchy */
+.contact-card strong {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.contact-card span {
+  font-size: 0.95rem;
+  opacity: 0.8;
+}
+
+/* =========================
+   PRIMARY CARD (PHONE)
+========================= */
+
+.contact-card.primary {
+  transform: translateY(-6px);
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.12);
+}
+
+/* =========================
+   WHATSAPP HIGHLIGHT (CTA)
+========================= */
+
+.contact-card.highlight {
+  background: linear-gradient(160deg,
+      var(--whatsapp-green),
+      var(--whatsapp-green-dark));
+  color: #ffffff;
+  box-shadow:
+    0 30px 70px rgba(0, 0, 0, 0.22);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-card.highlight strong,
+.contact-card.highlight span {
+  color: #ffffff;
+}
+
+.contact-card.highlight .contact-icon {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+/* subtle gloss effect */
+.contact-card.highlight::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg,
+      transparent 35%,
+      rgba(255, 255, 255, 0.2),
+      transparent 65%);
+  opacity: 0.55;
+}
+
+/* =========================
+   HOVER EFFECTS (DESKTOP)
+========================= */
+
+@media (min-width: 1024px) {
+  .contact-card:hover {
+    transform: translateY(-10px);
+    box-shadow:
+      0 35px 85px rgba(0, 0, 0, 0.18);
+  }
+
+  .contact-card:hover .contact-icon {
+    transform: scale(1.08);
+  }
+}
+
+/* =========================
+   TOUCH INTERACTIONS (MOBILE & TABLET)
+========================= */
+
+/* Simulate hover on tap */
+.contact-card:active,
+.contact-card:focus-visible {
+  transform: translateY(-10px);
+  box-shadow:
+    0 35px 85px rgba(0, 0, 0, 0.18);
+}
+
+/* Icon reacts on tap */
+.contact-card:active .contact-icon,
+.contact-card:focus-visible .contact-icon {
+  transform: scale(1.08);
+}
+
+/* Prevent ugly tap highlight on mobile */
+.contact-card {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Slight press-down effect for realism */
+.contact-card:active {
+  transform: translateY(-6px);
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.16);
+}
+
+
+/* =========================
+   RESPONSIVE GRID
+========================= */
+
+@media (min-width: 768px) {
+  .contact-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* =========================
+   CTA BAND
+========================= */
+
+/* =========================
+   FOOTER
+========================= */
+
+.site-footer {
+  background: linear-gradient(180deg,
+      #ffd45f 0%,
+      #ffcc4d 100%);
+
+  padding: 4rem 0 0;
+  margin-top: 5rem;
+}
+
+/* NEW centering layer */
+.footer-content {
+  max-width: 1100px;
+  /* ⬅️ intentionally narrower */
+  margin: 0 auto;
+  padding-inline: clamp(1.5rem, 5vw, 3rem);
+}
+
+/* Actual layout */
+.footer-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  padding-bottom: 3rem;
+}
+
+/* Blocks */
+.footer-block {
+  text-align: left;
+}
+
+.footer-brand {
+  text-align: left;
+}
+
+.footer-block h4 {
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.footer-block p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #444;
+}
+
+/* Logo */
+.footer-logo svg {
+  height: 42px;
+  margin-bottom: 0.75rem;
+}
+
+.footer-text {
+  color: #444;
+}
+
+/* =========================
+   FOOTER BOTTOM
+========================= */
+
+.footer-bottom {
+  position: relative;
+  padding: 2.25rem 0 1.5rem;
+  /* more air above text */
+}
+
+/* Centered divider above footer bottom content */
+.footer-bottom::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 340px;
+  height: 2px;
+
+  background: linear-gradient(to right,
+      transparent,
+      rgba(0, 0, 0, 0.28),
+      transparent);
+}
+
+.footer-bottom-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding-inline: clamp(1.5rem, 5vw, 3rem);
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  text-align: center;
+
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.footer-credit {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.footer-credit a {
+  color: var(--dark);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.footer-credit a:hover {
+  text-decoration: underline;
+}
+
+/* =========================
+   TABLET & DESKTOP
+========================= */
+
+@media (min-width: 768px) {
+  .footer-inner {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .footer-bottom-inner {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+  }
+}
+
+/* =========================
+   FOOTER – MOBILE ALIGNMENT FIX
+========================= */
+
+@media (max-width: 767px) {
+
+  .footer-inner {
+    text-align: center;
+  }
+
+  .footer-block {
+    text-align: center;
+  }
+
+  .footer-logo {
+    justify-content: center;
+  }
+
+  .footer-text {
+    text-align: center;
+  }
+}
+
+/* Footer legal link */
+.footer-links a {
+  font-size: 0.85rem;
+  color: var(--dark);
+  text-decoration: none;
+  opacity: 0.8;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+  opacity: 1;
+}
+
+
+/* =========================================================
+   GLOBAL SECTION SPACING (KEEP)
+========================================================= */
+section {
+  padding: 3.5rem 0;
+}
+
+@media (min-width: 768px) {
+  section {
+    padding: 5rem 0;
+  }
+}
+
+/* =========================================================
+   SERVICES — FINAL ARCHITECTURE
+========================================================= */
+
+/* Attach services to hero & remove internal padding */
+.services-section {
+  padding: 0;
+  display: block;
+}
+
+/* FULL-WIDTH + EQUAL HEIGHT (DESKTOP / TABLET) */
+.service-row {
+  position: relative;
+
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+
+  height: 420px;
+  /* equal rows on desktop */
+  display: flex;
+  align-items: stretch;
+
+  background: #fff3b0;
+  border-radius: 0;
+  box-shadow: none;
+
+  overflow: hidden;
+}
+
+/* Alternating layout */
+.service-row.reverse {
+  flex-direction: row-reverse;
+}
+
+/* =========================================================
+   SERVICES — SUBTLE YELLOW VARIATION PER ROW
+========================================================= */
+
+/* 1st service — base */
+.services-section .service-row:nth-of-type(1) {
+  background-color: #fff7c8;
+}
+
+/* 2nd service — slightly deeper */
+.services-section .service-row:nth-of-type(2) {
+  background-color: #fff3b0;
+}
+
+/* 3rd service — slightly lighter */
+.services-section .service-row:nth-of-type(3) {
+  background-color: #ffeaa0;
+}
+
+
+/* =========================================================
+   CONTENT (TITLE ABOVE DESCRIPTION)
+========================================================= */
+.service-content {
+  flex: 1;
+  padding: 4rem;
+
+  display: flex;
+  flex-direction: column;
+  /* title above text */
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.service-row.reverse .service-content {
+  text-align: right;
+}
+
+/* Mirror content alignment for reversed rows */
+.service-row.reverse .service-content {
+  align-items: flex-end;
+}
+
+
+.service-content h3 {
+  font-size: 1.8rem;
+  margin-bottom: 0;
+}
+
+.service-content p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  max-width: 520px;
+  margin: 0;
+}
+
+/* =========================================================
+   IMAGE — BASE (MOBILE FIRST)
+========================================================= */
+.service-image {
+  flex: 1;
+  overflow: hidden;
+
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+}
+
+.service-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  /* default for mobile + tablet */
+  display: block;
+}
+
+/* =========================================================
+   IMAGE — TABLET (KEEP CENTERED)
+========================================================= */
+@media (min-width: 769px) and (max-width: 1023px) {
+  .service-image img {
+    object-position: center center;
+  }
+}
+
+/* =========================================================
+   IMAGE — DESKTOP ONLY (SIDE-BY-SIDE LAYOUT)
+========================================================= */
+@media (min-width: 1024px) {
+  .service-image img {
+    object-position: -20px center;
+    /* shift ONLY on desktop */
+  }
+}
+
+/* =========================================================
+   IMAGE VISIBILITY (DESKTOP / TABLET)
+========================================================= */
+.services-section .img-desktop {
+  display: block !important;
+}
+
+.services-section .img-mobile {
+  display: none !important;
+}
+
+/* =========================================================
+   ANIMATIONS (DESKTOP DEFAULT)
+========================================================= */
+.animate-row {
+  opacity: 0;
+}
+
+.animate-row .service-image {
+  transform: translateX(-80px) translateY(30px);
+  opacity: 0;
+}
+
+.animate-row .service-content {
+  transform: translateX(80px) translateY(-30px);
+  opacity: 0;
+}
+
+/* Reverse animation direction */
+.service-row.reverse .service-image {
+  transform: translateX(80px) translateY(30px);
+}
+
+.service-row.reverse .service-content {
+  transform: translateX(-80px) translateY(-30px);
+}
+
+/* Active state */
+.animate-row.in-view {
+  opacity: 1;
+}
+
+.animate-row.in-view .service-image,
+.animate-row.in-view .service-content {
+  transform: translate(0, 0);
+  opacity: 1;
+  transition:
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.6s ease;
+}
+
+/* =========================================================
+   SERVICES — MOBILE (TRUE CENTER FIX)
+========================================================= */
+@media (max-width: 768px) {
+
+  /* SAME STACK FOR ALL ROWS */
+  .service-row,
+  .service-row.reverse {
+    height: auto;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  /* IMAGE */
+  .service-image {
+    width: 100%;
+    height: 260px;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .service-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transform: none !important;
+  }
+
+  /* 🔥 HARD RESET TEXT BLOCK */
+  .service-content {
+    width: 100%;
+    padding: 2.5rem 2rem;
+
+    display: flex !important;
+    flex-direction: column;
+    align-items: center !important;
+    justify-content: center;
+
+    text-align: center !important;
+    transform: none !important;
+  }
+
+  /* 🔥 KILL GLOBAL WIDTH + MARGINS */
+  .service-content h3,
+  .service-content p {
+    max-width: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    text-align: center !important;
+  }
+
+  /* IMAGE SWITCH */
+  .services-section .img-desktop {
+    display: none !important;
+  }
+
+  .services-section .img-mobile {
+    display: block !important;
+  }
+}
+
+
+/* =========================================================
+   SERVICES — POP-OUT EFFECT (DESKTOP + TOUCH)
+========================================================= */
+
+/* Base transition (shared) */
+.service-row {
+  position: relative;
+  z-index: 1;
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s ease,
+    filter 0.35s ease;
+}
+
+/* Desktop hover */
+@media (hover: hover) and (pointer: fine) {
+  .service-row:hover {
+    transform: scale(1.015);
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.22);
+    filter: brightness(1.02) saturate(1.02);
+    z-index: 2;
+  }
+}
+
+/* Touch devices — press (tap) */
+@media (hover: none) and (pointer: coarse) {
+  .service-row:active {
+    transform: scale(1.015);
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.22);
+    filter: brightness(1.02) saturate(1.02);
+    z-index: 2;
+  }
+}
+
+/* =========================
+   LEGAL PAGES
+========================= */
+
+.legal-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem 5rem;
+}
+
+.legal-page h1 {
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.legal-page h2 {
+  font-size: 1.25rem;
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.legal-page p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #444;
+  margin-bottom: 1rem;
+}
+
+.legal-page ul {
+  margin: 1rem 0 1.5rem 1.25rem;
+}
+
+.legal-page li {
+  margin-bottom: 0.5rem;
+}
+
+.legal-page .legal-note {
+  margin-top: 3rem;
+  padding: 1.25rem 1.5rem;
+  background: rgba(244, 226, 133, 0.25);
+  border-radius: 0.75rem;
+  font-size: 0.95rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+#services,
+#how,
+#contact {
+  scroll-margin-top: 96px;
+}
+
+/* =========================
+   DESKTOP TYPOGRAPHY SCALE
+========================= */
+
+@media (min-width: 1024px) {
+
+  /* ================= HERO ================= */
+
+  .hero-inner h1 {
+    font-size: clamp(2.6rem, 4.8vw, 3.4rem);
+  }
+
+  .hero-text {
+    font-size: 1.35rem;
+    line-height: 1.75;
+  }
+
+  /* ================= SECTION INTRO ================= */
+
+  .section-inner h2 {
+    font-size: 2.6rem;
+  }
+
+  .section-inner p {
+    font-size: 1.25rem;
+    line-height: 1.8;
+  }
+
+  /* ================= SERVICES (REFERENCE) ================= */
+
+  .service-content h3 {
+    font-size: 1.8rem;
+  }
+
+  .service-content p {
+    font-size: 1.25rem;
+    line-height: 1.9;
+  }
+
+  /* ================= HOW IT WORKS ================= */
+
+  .how-number {
+    font-size: 1.4rem;
+  }
+
+  .how-card h3 {
+    font-size: 1.8rem;
+    /* ⬅️ MATCHES SERVICES */
+  }
+
+  .how-card p {
+    font-size: 1.25rem;
+    /* ⬅️ MATCHES SERVICES */
+    line-height: 1.8;
+  }
+
+  /* ================= CONTACT ================= */
+
+  .contact-card strong {
+    font-size: 1.25rem;
+    /* ⬅️ MATCHES BODY TEXT */
+  }
+
+  .contact-card span {
+    font-size: 1.15rem;
+  }
+}
+
+/* ========================================
+   CARE STATEMENT — BANNER STYLE
+======================================== */
+
+.services-micro {
+  position: relative;
+  width: 100%;
+
+  /* VERY THIN */
+  padding: 1.6rem 2rem;
+
+  background: linear-gradient(180deg,
+      rgba(248, 245, 238, 0.95) 0%,
+      rgba(238, 232, 220, 0.98) 100%);
+
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+/* decorative hairline */
+.services-micro::before,
+.services-micro::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 18%;
+  height: 1px;
+
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(120, 160, 120, 0.45),
+      transparent);
+}
+
+.services-micro::before {
+  left: 0%;
+}
+
+.services-micro::after {
+  right: 0%;
+}
+
+/* TEXT — SIDE TO SIDE, NOT COLUMN */
+.services-micro p {
+  margin: 0;
+  padding: 0;
+
+  width: 100%;
+  max-width: none;
+  /* 👈 key change */
+
+  font-size: 1.85rem;
+  line-height: 1.25;
+  font-weight: 300;
+  /* ultra-light = luxury */
+
+  color: #2e3a2e;
+
+  letter-spacing: 0.06em;
+  white-space: normal;
+}
+
+/* mobile fine-tuning */
+@media (max-width: 768px) {
+  .services-micro {
+    padding: 1.2rem 1.2rem;
+  }
+
+  .services-micro p {
+    font-size: 1.35rem;
+    letter-spacing: 0.04em;
+  }
+
+  .services-micro::before,
+  .services-micro::after {
+    display: none;
+    /* keep mobile clean */
+  }
+}
+
+/* ========================================
+   ABOUT US — SPLIT LAYOUT, NO CARD
+======================================== */
+
+.about-section {
+  position: relative;
+  padding: 8rem 1.5rem;
+  overflow: hidden;
+}
+
+/* FULL-WIDTH YELLOW BACKGROUND */
+.about-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  /* darker than #ffeaa0, same yellow family */
+  background: linear-gradient(180deg,
+      #ffdf7a 0%,
+      #ffd86b 100%);
+
+  z-index: 0;
+}
+
+/* INNER WRAPPER (LIKE SERVICES ROW) */
+.about-inner {
+  position: relative;
+  z-index: 1;
+
+  max-width: 1200px;
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  gap: 4.5rem;
+}
+
+/* TEXT COLUMN */
+.about-text {
+  flex: 1;
+  text-align: center;
+}
+
+/* SVG / IMAGE COLUMN */
+.about-media {
+  flex: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =========================
+   TYPOGRAPHY
+========================= */
+
+.about-section h2 {
+  font-size: 2.8rem;
+  font-weight: 500;
+  color: #2e3a2e;
+  margin-bottom: 2.4rem;
+}
+
+.about-lead {
+  font-size: 1.55rem;
+  line-height: 1.6;
+  color: #3a463a;
+  margin-bottom: 2rem;
+}
+
+.about-section p {
+  font-size: 1.25rem;
+  line-height: 1.75;
+  color: #444;
+  margin-bottom: 1.5rem;
+}
+
+.about-quote {
+  margin-top: 3rem;
+  padding-top: 1.6rem;
+
+  font-size: 1.55rem;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+
+  color: #2e3a2e;
+
+  border-top: 1px solid rgba(120, 140, 120, 0.28);
+}
+
+/* ========================================
+   ABOUT SECTION — HARD RESET
+   (NO PADDING — ROW CONTROLS HEIGHT)
+======================================== */
+
+.about-section {
+  padding: 0 !important;
+  /* 🔥 removes external spacing */
+  margin: 0;
+}
+
+
+/* ========================================
+   ABOUT — IDENTICAL LOGIC TO SERVICES
+   (TEXT CONTROLS HEIGHT, IMAGE OBEYS)
+======================================== */
+
+.about-row {
+  position: relative;
+  z-index: 1;
+  /* 🔥 CRITICAL — above ::before */
+
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+
+  min-height: 420px;
+  display: flex;
+  align-items: stretch;
+
+  background: linear-gradient(180deg,
+      #ffdf7a 0%,
+      #ffd86b 100%);
+
+  /* animation initial state */
+  opacity: 0;
+}
+
+/* reverse = text left, image right */
+.about-row.reverse {
+  flex-direction: row-reverse;
+}
+
+
+/* ========================================
+   IMAGE — NEVER DEFINES HEIGHT
+   (FOLLOWS ROW HEIGHT ONLY)
+======================================== */
+
+.about-image {
+  flex: 1;
+  overflow: hidden;
+
+  /* 🔒 image does NOT participate in height calculation */
+  align-self: stretch;
+}
+
+.about-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* image switching */
+.about-image .img-desktop {
+  display: block;
+}
+
+.about-image .img-mobile {
+  display: none;
+}
+
+
+/* ========================================
+   TEXT — DEFINES HEIGHT WHEN NEEDED
+======================================== */
+
+.about-content {
+  flex: 1;
+
+  /* ⬇️ space applies ONLY to text */
+  padding: 6.5rem 4rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+  color: #2e3a2e;
+}
+
+.about-content h2 {
+  font-size: 2.4rem;
+  margin-bottom: 1.25rem;
+}
+
+.about-lead {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  max-width: 560px;
+}
+
+.about-content p {
+  max-width: 560px;
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+}
+
+/* Divider before final sentence */
+.about-divider {
+  width: 60px;
+  height: 2px;
+  background: rgba(0, 0, 0, 0.25);
+  margin: 1.75rem auto 1.25rem;
+}
+
+.about-quote {
+  font-style: italic;
+  font-size: 1.05rem;
+  opacity: 0.9;
+}
+
+
+/* ========================================
+   MOBILE — SAME AS SERVICES
+======================================== */
+
+@media (max-width: 768px) {
+
+  .about-row,
+  .about-row.reverse {
+    flex-direction: column;
+    min-height: auto;
+    /* text fully controls height */
+  }
+
+  .about-image {
+    width: 100%;
+    height: 260px;
+    /* controlled mobile image */
+  }
+
+  .about-content {
+    padding: 3.5rem 1.75rem;
+  }
+
+  .about-image .img-desktop {
+    display: none;
+  }
+
+  .about-image .img-mobile {
+    display: block;
+  }
+}
+
+/* ========================================
+   ABOUT — SCROLL REVEAL ANIMATION (FINAL)
+======================================== */
+
+/* initial hidden state */
+.about-row {
+  opacity: 0;
+}
+
+.about-content {
+  transform: translateX(-80px);
+  opacity: 0;
+}
+
+.about-image {
+  transform: translateX(80px);
+  opacity: 0;
+}
+
+/* when visible */
+.about-row.in-view {
+  opacity: 1;
+}
+
+.about-row.in-view .about-content,
+.about-row.in-view .about-image {
+  transform: translateX(0);
+  opacity: 1;
+  transition:
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.6s ease;
+}
+
+/* mobile */
+@media (max-width: 768px) {
+  .about-content {
+    transform: translateY(40px);
+  }
+
+  .about-image {
+    transform: translateY(-40px);
+  }
+
+  .about-row.in-view .about-content,
+  .about-row.in-view .about-image {
+    transform: translateY(0);
+  }
+}
+
+/* =========================================================
+   SERVICES — FORCE EXACT 50/50 (DESKTOP/TABLET)
+========================================================= */
+
+.service-row {
+  display: flex;
+  align-items: stretch;
+}
+
+/* EXACT split */
+.service-row>.service-image,
+.service-row>.service-content {
+  flex: 0 0 50%;
+  max-width: 50%;
+  width: 50%;
+}
+
+/* make sure image area is full-height and crops nicely */
+.service-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.service-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* =========================================================
+   SERVICES — MOBILE STACK
+========================================================= */
+
+@media (max-width: 768px) {
+  .service-row {
+    flex-direction: column;
+    height: auto;
+    /* important: don't keep desktop row height */
+  }
+
+  .service-row>.service-image,
+  .service-row>.service-content {
+    flex: 0 0 100%;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .service-image {
+    height: 260px;
+    /* your mobile image height */
+  }
+
+  .service-image img {
+    height: 100%;
+  }
+}
+
+/* =========================================================
+   SERVICES — IMAGE FOCAL POINT (DESKTOP ONLY)
+========================================================= */
+
+@media (min-width: 1024px) {
+
+  /* normal rows (image on right) */
+  .service-row:not(.reverse) .service-image img {
+    object-position: 58% center;
+  }
+
+  /* reversed rows (image on left) */
+  .service-row.reverse .service-image img {
+    object-position: 42% center;
+  }
+}
+
+/* make sure inner wrapper fills the image column */
+.about-image-inner {
+  width: 100%;
+  height: 100%;
+}
+
+/* image still fills */
+.about-image-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ABOUT — STABLE 50/50 SPLIT */
+
+/* =========================
+   FOOTER — RELATED SERVICE
+========================= */
+
+.footer-related {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.footer-related a {
+  margin-left: 0.25rem;
+  color: #2e3a2e;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.footer-related a:hover {
+  text-decoration: underline;
+}
+
+.footer-related strong {
+  font-weight: 600;
+}
+
+/* =========================
+   MOBILE MENU DROPDOWN
+========================= */
+
+/* MOBILE ONLY */
+@media (max-width: 1023px) {
+
+  .mobile-nav {
+    position: fixed;
+    top: 64px;
+    /* header height */
+    left: 0;
+    right: 0;
+
+    display: none;
+    padding: 2rem 1rem;
+
+    max-height: calc(100vh - 64px);
+    overflow-y: auto;
+    /* ✅ menu scrolls */
+    overscroll-behavior: contain;
+
+    background:
+      linear-gradient(rgba(255, 255, 255, 0.7),
+        rgba(255, 255, 255, 0.7)),
+      url("/assets/images/open_door.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    -webkit-overflow-scrolling: touch;
+    z-index: 999;
+  }
+
+  .mobile-nav.open {
+    display: block;
+  }
+
+  .mobile-nav ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.6rem;
+  }
+}
+
+/* DESKTOP RESET */
+@media (min-width: 1024px) {
+
+  .mobile-nav {
+    position: static;
+    display: block;
+    padding: 0;
+    background: none;
+    max-height: none;
+    overflow: visible;
+  }
+
+  .mobile-nav ul {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+  }
+}
+
+/* =========================
+   PAGE SCROLL LOCK (MENU OPEN)
+========================= */
+
+body.menu-open {
+  overflow: hidden;
+  /* ✅ desktop */
+  height: 100vh;
+  /* ✅ mobile */
+  touch-action: none;
+}
+
+html.menu-open {
+  overflow: hidden;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+.site-header {
+  top: 0;
+  transition: top 0.25s ease;
+}
