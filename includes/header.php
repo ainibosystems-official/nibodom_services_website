@@ -1,6 +1,12 @@
 <?php
 // Detect language from folder
-$lang = basename(dirname($_SERVER['PHP_SELF']));
+$path = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
+$segments = explode('/', $path);
+$lang = $segments[0] ?? 'bg';
+
+if (!in_array($lang, ['bg', 'en', 'ua'])) {
+  $lang = 'bg';
+}
 
 // Navigation labels by language
 $nav = [
@@ -103,7 +109,7 @@ if (!isset($nav[$lang])) {
 
       <!-- LOGO -->
       <a href="/<?= $lang ?>/" class="logo">
-        <?php include $_SERVER['DOCUMENT_ROOT'] . '/assets/images/logo.svg'; ?>
+        <img src="/assets/images/logo.svg" alt="NiBoDom">
       </a>
 
       <!-- MOBILE TOGGLE -->

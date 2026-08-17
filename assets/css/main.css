@@ -160,7 +160,7 @@ p {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 64px;
+  min-height: 60px;
 
   max-width: 2560px;
   /* ⬅️ MATCH MAIN CONTENT */
@@ -170,7 +170,12 @@ p {
 }
 
 .logo svg {
-  height: 40px;
+  height: 30px;
+  width: auto;
+}
+
+.logo img {
+  height: 34px;
   width: auto;
 }
 
@@ -292,11 +297,6 @@ p {
     padding: 0.85rem 1.2rem;
   }
 
-  /* Logo */
-  .logo svg {
-    height: 56px;
-    /* slightly bigger than before */
-  }
 }
 
 /* =========================
@@ -1043,8 +1043,8 @@ p {
 
 .site-footer {
   background: linear-gradient(180deg,
-      #ffd45f 0%,
-      #ffcc4d 100%);
+      #fff7c8 0%,
+      #fff7c8 100%);
 
   padding: 4rem 0 0;
   margin-top: 5rem;
@@ -1088,8 +1088,8 @@ p {
 }
 
 /* Logo */
-.footer-logo svg {
-  height: 42px;
+.footer-logo img {
+  height: 36px;
   margin-bottom: 0.75rem;
 }
 
@@ -1151,6 +1151,30 @@ p {
 
 .footer-credit a:hover {
   text-decoration: underline;
+}
+
+.footer-social {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.footer-social svg {
+  fill: #1877F2;
+  transition: fill 0.2s ease;
+}
+
+.footer-social a {
+  color: #1877F2;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-social:hover svg,
+.footer-social a:hover {
+  fill: #4c8df6;
+  color: #4c8df6;
 }
 
 /* =========================
@@ -1308,7 +1332,7 @@ section {
 .service-content p {
   font-size: 1.05rem;
   line-height: 1.6;
-  max-width: 520px;
+  max-width: 1024px;
   margin: 0;
 }
 
@@ -1903,7 +1927,7 @@ html {
 }
 
 .about-content p {
-  max-width: 560px;
+  max-width: 1024px;
   line-height: 1.7;
   margin-bottom: 1.25rem;
 }

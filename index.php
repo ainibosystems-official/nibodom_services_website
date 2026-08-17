@@ -1,3 +1,3 @@
 <?php
-header("Location: /bg/");
-exit;
+$lang = 'bg';
+require __DIR__ . '/bg/index.php';

@@ -1,0 +1,149 @@
+/* =========================
+   RESET
+========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* =========================
+   BASE
+========================= */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    height: 100vh;
+    overflow: hidden;
+    background: black;
+}
+
+/* =========================
+   BACKGROUND IMAGE
+========================= */
+.bg {
+    position: fixed;
+    inset: 0;
+    background: url("../images/beachhousesJL25.png") center / cover no-repeat;
+    transform: scale(1.08);
+    filter: brightness(0.7);
+}
+
+/* =========================
+   OVERLAY (LUXURY)
+========================= */
+.overlay {
+    position: fixed;
+    inset: 0;
+    background:
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.7)),
+        radial-gradient(circle at 70% 30%, rgba(0, 180, 220, 0.25), transparent 60%);
+}
+
+/* =========================
+   WRAPPER
+========================= */
+.wrapper {
+    position: relative;
+    z-index: 10;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* =========================
+   CARD (FIXED PROPERLY)
+========================= */
+.card {
+    backdrop-filter: blur(12px);
+    background: rgba(15, 20, 25, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 22px;
+    padding: 70px 60px;
+    text-align: center;
+    max-width: 520px;
+    width: 100%;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+}
+
+/* =========================
+   LOGO
+========================= */
+.logo {
+    width: 200px;
+    margin-bottom: 30px;
+    filter: brightness(1.15) contrast(1.2);
+}
+
+/* =========================
+   TEXT
+========================= */
+h1 {
+    color: #ffffff;
+    font-size: 47px;
+    font-weight: 640;
+    margin-bottom: 22px;
+    line-height: 1.1;
+}
+
+p {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 19px;
+}
+
+/* =========================
+   LINE
+========================= */
+.line {
+    margin: 40px auto 0;
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(to right, #4fc3f7, #26c6da);
+    border-radius: 2px;
+}
+
+/* =========================
+   GOLD GLOW
+========================= */
+.glow {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 5;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.glow::before {
+    content: "";
+    width: 600px;
+    height: 600px;
+
+    background: radial-gradient(circle,
+            rgba(255, 200, 80, 0.35),
+            rgba(255, 200, 80, 0.15),
+            transparent 70%);
+
+    filter: blur(80px);
+    border-radius: 50%;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+    .card {
+        padding: 45px 25px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    .logo {
+        width: 150px;
+    }
+}
